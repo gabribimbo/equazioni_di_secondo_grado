@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="viewport-fit=cover,width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; img-src 'self' https://*.zoom.us https://*.zoomdev.us https://zoom.us data: zmdf:; font-src 'self' data: zmdf:; media-src 'self' https://*.zoom.us https://*.zoomdev.us https://zoom.us data: zmdf:; style-src 'self' 'unsafe-eval' 'unsafe-inline'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; child-src 'self' mailto: tel: callto: zoomphonecall: zoomus: data: zmdf:"><title>Zoom Calendar</title><style>body {
+      font-family: system-ui;
+    }
+    ::-webkit-scrollbar {
+        background: transparent;
+        height: 8px;
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        background: #dadce0;
+        -webkit-border-radius: 8px;
+        border-radius: 8px;
+        min-height: 40px;
+    }
+
+  @media (prefers-color-scheme: dark) {
+    html, body {
+      overflow: hidden;
+      background-color: #333;
+      height: 100%;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    html, body {
+      overflow: hidden;
+      background-color: #fff;
+      height: 100%;
+    }
+  }
+  html, body {
+    overflow: hidden;
+    height: 100%;
+  }
+    .app-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 104px;
+      z-index: 100;
+      box-shadow: 0 0 2px rgba(0,0,0,0.2);
+    }
+
+    .app-header .bar {
+      height: 40px;
+      background: #39394d;
+    }
+
+    .app-header .sub-bar {
+      height: 64px;
+      background: #fff;
+    }
+
+    .app-footer {
+      height: 350px;
+      background: #39394d;
+    }
+
+    .app-container {
+      display: flex;
+      padding-top: 104px;
+      min-height: 624px;
+    }
+
+    .nav {
+      flex: 0 0 300px;
+      background: #f7f7fa;
+    }
+
+    #app {
+      flex: 1;
+      /* overflow: hidden; */
+      padding: 32px 24px;
+    }</style><script>document.oncontextmenu = function () {
+      return false
+    };</script><link href="static/css/chunk-47800c2e.1219c0b1.css" rel="prefetch"><link href="static/css/vue-route.6e715d1a.css" rel="prefetch"><link href="static/css/zm-tree.bba01dde.css" rel="prefetch"><link href="static/js/chunk-07658a3c.6a5abffe.js" rel="prefetch"><link href="static/js/chunk-2d0b1e82.c69aa36a.js" rel="prefetch"><link href="static/js/chunk-2d2080c7.f557633f.js" rel="prefetch"><link href="static/js/chunk-47800c2e.3d7dd36e.js" rel="prefetch"><link href="static/js/i18n-de-DE.48414b4f.js" rel="prefetch"><link href="static/js/i18n-de.9d8eca40.js" rel="prefetch"><link href="static/js/i18n-en-US.0b7e792e.js" rel="prefetch"><link href="static/js/i18n-en.197e5969.js" rel="prefetch"><link href="static/js/i18n-es-ES.04db073a.js" rel="prefetch"><link href="static/js/i18n-es.dc583e43.js" rel="prefetch"><link href="static/js/i18n-fr-FR.7213d54d.js" rel="prefetch"><link href="static/js/i18n-fr.8875bccd.js" rel="prefetch"><link href="static/js/i18n-id-ID.fd47f5c8.js" rel="prefetch"><link href="static/js/i18n-id.36aca745.js" rel="prefetch"><link href="static/js/i18n-it-IT.c79322a5.js" rel="prefetch"><link href="static/js/i18n-it.e6db7cc1.js" rel="prefetch"><link href="static/js/i18n-jp-JP.1dd44830.js" rel="prefetch"><link href="static/js/i18n-jp.1fdd8d73.js" rel="prefetch"><link href="static/js/i18n-ko-KO.0fbd988b.js" rel="prefetch"><link href="static/js/i18n-ko.fdc43342.js" rel="prefetch"><link href="static/js/i18n-nl-NL.198e47c1.js" rel="prefetch"><link href="static/js/i18n-nl.0e24f488.js" rel="prefetch"><link href="static/js/i18n-pl-PL.bfa9d405.js" rel="prefetch"><link href="static/js/i18n-pl.a742f88d.js" rel="prefetch"><link href="static/js/i18n-pt-PT.8285982a.js" rel="prefetch"><link href="static/js/i18n-pt.7ee4c6b3.js" rel="prefetch"><link href="static/js/i18n-ru-RU.8f93e6c3.js" rel="prefetch"><link href="static/js/i18n-ru.891ce82f.js" rel="prefetch"><link href="static/js/i18n-tr-TR.fb037a58.js" rel="prefetch"><link href="static/js/i18n-tr.de2ab4cb.js" rel="prefetch"><link href="static/js/i18n-vi-VN.1ba528c6.js" rel="prefetch"><link href="static/js/i18n-vi.216583bb.js" rel="prefetch"><link href="static/js/i18n-zh-CN.11e193eb.js" rel="prefetch"><link href="static/js/i18n-zh-TW.252d9c5f.js" rel="prefetch"><link href="static/js/i18n-zhCN.89610673.js" rel="prefetch"><link href="static/js/i18n-zhTW.23c02b81.js" rel="prefetch"><link href="static/js/vue-route.19114b63.js" rel="prefetch"><link href="static/js/zm-tree.8818d7c4.js" rel="prefetch"><link href="static/css/app.93082b85.css" rel="preload" as="style"><link href="static/css/chunk-vendors.dc891ce4.css" rel="preload" as="style"><link href="static/js/app.90ef6db8.js" rel="preload" as="script"><link href="static/js/chunk-vendors.17c1fa2e.js" rel="preload" as="script"><link href="static/css/chunk-vendors.dc891ce4.css" rel="stylesheet"><link href="static/css/app.93082b85.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but calendar-app-demo doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div><script>// inject some global data here
+  window.domainFromServer = ''</script><script src="static/js/chunk-vendors.17c1fa2e.js"></script><script src="static/js/app.90ef6db8.js"></script></body></html>

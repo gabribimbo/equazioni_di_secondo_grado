@@ -1,0 +1,130 @@
+<!--
+ONLY FOR MAC OS:
+When the user's device's os version is unfit for the requirements (macOS Sierra and above),
+this page will be loaded by the native client.
+-->
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <title>Mail Client</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>zoom email</title>
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; object-src 'none'; img-src * data: zmdf:; media-src * data: zmdf:; style-src 'self' 'unsafe-eval' 'unsafe-inline'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; child-src * mailto: tel: callto: zoomphonecall: zoomus: data: zmdf:;"
+  />
+  <style>
+    :host {
+      --zm-background-color: #fff;
+      --zm-text-color: #131619;
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        --zm-background-color: #232323;
+        --zm-text-color: #848484;
+      }
+    }
+    body.dark {
+      --zm-background-color: #232323;
+      --zm-text-color: #848484;
+    }
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+    }
+    html,
+    body {
+      position: fixed;
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      max-height: 100%;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      overscroll-behavior-y: none;
+      word-wrap: break-word;
+      touch-action: manipulation;
+      -webkit-user-select: none;
+      user-select: none;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizelegibility;
+      -webkit-user-drag: none;
+      -ms-content-zooming: none;
+      -webkit-text-size-adjust: none;
+      text-size-adjust: none;
+    }
+    body {
+      width: 100vw;
+      height: 100vh;
+      font-family: Avenir, Helvetica, Arial, sans-serif;
+      background-color: var(--zm-background-color);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .upgrade-tips {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 80vw;
+      margin-top: -80px;
+      margin-left: -40vw;
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Roboto, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--zm-text-color);
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+<div class="upgrade-tips" id="app">
+  <div class="tips-text">Update the OS version (macOS High Sierra and above) for your device to use Zmail.</div>
+</div>
+</body>
+<script>
+  const darkMedia = window.matchMedia('(prefers-color-scheme: dark)');
+  let listenerFuncName = darkMedia.addEventListener ? 'addEventListener' : 'addListener';
+  if (!darkMedia[listenerFuncName]) {
+    console.warn('this browser core dose not support mediaQuery listener');
+  } else {
+    let currentAppearance;
+    const AppearanceMode = {
+      DARK: 'dark',
+      LIGHT: 'light',
+    };
+
+    const mediaQueryListener = (e) => {
+      const matchPreferDarkDarkMode = e.matches;
+      if (matchPreferDarkDarkMode) {
+        currentAppearance = AppearanceMode.DARK;
+        document.body.classList.add(currentAppearance);
+      } else {
+        currentAppearance = AppearanceMode.LIGHT;
+        document.body.classList.remove(AppearanceMode.DARK);
+      }
+    };
+    if (listenerFuncName === 'addEventListener') {
+      darkMedia[listenerFuncName]('change', mediaQueryListener);
+    } else if (listenerFuncName === 'addListener') {
+      darkMedia[listenerFuncName](mediaQueryListener);
+    }
+
+    currentAppearance = darkMedia.matches ? AppearanceMode.DARK : AppearanceMode.LIGHT;
+    currentAppearance === 'dark' && document.body.classList.add(currentAppearance);
+  }
+</script>
+</html>
